@@ -69,7 +69,6 @@ def init(img, method):
 
 
 def kernel_function(img):
-
 	# compute kerlen function using two RBF kernel to consider
 	# spatial similarity and color similarity at the same time.
     pos = np.zeros((data_size,2),dtype=np.uint8)
@@ -105,7 +104,6 @@ def clustering(centroid):
 	return labels
 
 def get_mask(labels):
-
 	#compute indicator vector foe each cluster
 	mask = []
 	for k in range(cluster_num):
@@ -116,7 +114,6 @@ def get_mask(labels):
 def term_2(cluster_cnt, kernel_mat, mask):
 	output = np.zeros((data_size, cluster_num), dtype=float)
 	for k in range(cluster_num):
-
 		if(cluster_cnt[k]!=0):
 			term2_vector =  (2/cluster_cnt[k])*kernel_mat.dot(mask[k])
 		else:
@@ -155,12 +152,10 @@ def visualization(labels, iteration, method):
 	cv2.imwrite('discuss2'+method +'_c=' + str(cluster_num)+'_it' + str(iteration)+'.png', img )
 
 def kernel_kmeans(img,method):
-
-	
 	# img: the original 10000X3 data
-
 	# method: parameters indicating the way to initialize k-means clustering centroids
 	# --random, kmeans++, mod method 
+	
 	labels, cluster_cnt= init(img, method)
 	kernel_mat = kernel_function(img)    
 	iteration = 0
@@ -189,10 +184,6 @@ def kernel_kmeans(img,method):
 if __name__== '__main__':
 	methods = ['random', 'kmeans++', 'mod']
 	print('target clusters:{}'.format(cluster_num))
-
-
-
 	for method in methods:
-		
 		print('method:{}'.format(method))
 		labels = kernel_kmeans(img, method)
