@@ -165,12 +165,12 @@ def Part3_user_defined_kernel():
 if __name__== '__main__':
 
 	x_train, x_test, y_train, y_test = data_preprocessing()
-	'''print('Part1_kernel_compare:')
+	print('Part1_kernel_compare:')
 	print('')
 	Part1_kernel_compare()
 	print('Part2_grid_search')
 	print('')
-	Part2_grid_search()'''
+	Part2_grid_search()
 	print('Part3_user_defined_kernel')
 	print('')
 	Part3_user_defined_kernel()	
