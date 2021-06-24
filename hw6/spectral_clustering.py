@@ -39,6 +39,7 @@ def centroid_init(data, method):
         for i in range(cluster_num):
             centroid[i,:] = data_min[i] + diff[i] * centroid[i,:] 
         return centroid
+
     if (method == 'kmeans++'):
         data_min = data.min(axis=0)
         data_max = data.max(axis=0)
@@ -159,7 +160,6 @@ def kmeans(data, cut, method):
             break
 
 def eigen_visualization(labels, data, cut, method):
-    
     color = ['black',  'darkorange']
     for k in range(cluster_num):
         for i in range(data_size):
@@ -168,7 +168,6 @@ def eigen_visualization(labels, data, cut, method):
     plt.savefig(cut + '_c='+str(cluster_num)+'_222_' + method +'_clustersize=' + str(k)+'.png')
 
 if __name__== '__main__':
-
     methods = ['random', 'kmeans++']
     for method in methods:
         print('target clusters:{}'.format(cluster_num))
